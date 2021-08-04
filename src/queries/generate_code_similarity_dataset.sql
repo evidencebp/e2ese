@@ -78,3 +78,50 @@ f1.repo_name
 from
 general.contents_diff_java_june_aug_2021 as f1
 ;
+
+
+
+drop table if exists general.contents_diff_java_june_aug_2021_test;
+
+create table
+general.contents_diff_java_june_aug_2021_test
+as
+select
+*
+from
+general.contents_diff_java_june_aug_2021
+where
+general.bq_repo_split(repo_name) = 'Test'
+;
+
+
+drop table if exists general.contents_diff_java_june_aug_2021_validation;
+
+create table
+general.contents_diff_java_june_aug_2021_validation
+as
+select
+*
+from
+general.contents_diff_java_june_aug_2021
+where
+general.bq_repo_split(repo_name) = 'Validation'
+;
+
+
+drop table if exists general.contents_diff_java_june_aug_2021_train;
+
+create table
+general.contents_diff_java_june_aug_2021_train
+as
+select
+*
+from
+general.contents_diff_java_june_aug_2021
+where
+general.bq_repo_split(repo_name) = 'Train'
+;
+
+drop table if exists general.contents_diff_java_june_aug_2021_test;
+drop table if exists general.contents_diff_java_june_aug_2021_validation;
+drop table if exists general.contents_diff_java_june_aug_2021_train;
