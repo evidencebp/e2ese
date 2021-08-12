@@ -48,7 +48,7 @@ cf.repo_name as repo_name
 , count(distinct if(same_date_as_prev, ec.commit, null)) as same_day_commits
 , avg(if(same_date_as_prev, duration, null)) as same_day_duration_avg
 
-, 0.0 as prev_touch_ago
+, 0.0 as prev_touch_ago # Not updated now
 , 0.0 as bug_prev_touch_ago
 
 # Abstraction
