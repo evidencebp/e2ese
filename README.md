@@ -35,4 +35,12 @@ Note that there are many metrics so the data set can be used for many tasks.
 The program_repair file contains files modified once in the observed period.
 That make them suiable for program repair (as a bug fix or a refactor).
 
+## Code similarity
 
+The evolvment of code enable defining a similarity function over them.
+Different versions of the sme file are similar, other files are not.
+Of course, the negtive set is much lerger so we require the negative to be files from the same project and directory and downsampling them.
+The content files in the code_similarity files contain thos chnage in the next version(e.g., August).
+The rest of the files should be taken from the currnet version (e.g., June).
+
+The similarity file contains the labels.
