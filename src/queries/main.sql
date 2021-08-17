@@ -16,3 +16,5 @@
 # Run program_repair.sql
 
 # Run generate_commits_dataset.sql
+
+# Run generate_difficutly_pairs.sql
