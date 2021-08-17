@@ -12,3 +12,7 @@
 # Run file_properties_per_period.sql
 
 # Run generate_labels.sql
+
+# Run program_repair.sql
+
+# Run generate_commits_dataset.sql
