@@ -5,6 +5,7 @@
 #(again, preferring the the same developer)
 # Using beginners code is inspired by "Characterizing and Predicting Good First Issues"
 # https://www.eecs.yorku.ca/~wangsong/papers/esem21b.pdf
+# Another possible way is same developer, single same date commit and different duration
 
 drop table if exists general.difficulty_pairs;
 
