@@ -17,4 +17,4 @@
 
 # Run generate_commits_dataset.sql
 
-# Run generate_difficutly_pairs.sql
+# Run generate_difficulty_pairs.sql
