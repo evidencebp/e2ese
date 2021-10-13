@@ -3,7 +3,7 @@ select
 extension
 , count(*)
 from
-general.contents_1_august_2021 as cnt
+general.contents_1_october_2021 as cnt
 join
 general.repos_split as r
 on
@@ -21,10 +21,10 @@ count(*) desc
 ;
 
 
-drop table if exists general.august_2021_c_file_content;
+drop table if exists general.october_2021_c_file_content;
 
 create table
-general.august_2021_c_file_content
+general.october_2021_c_file_content
 as
 select
 id
@@ -34,7 +34,7 @@ id
 , general.bq_repo_split(cnt.repo_name) as repo_split
 , general.bq_file_split(cnt.repo_name, path) as file_split
 from
-general.contents_1_august_2021 as cnt
+general.contents_1_october_2021 as cnt
 join
 general.repos_split as r
 on
@@ -54,10 +54,10 @@ and
 oss_license_found
 ;
 
-drop table if exists general.august_2021_c_file_content_train;
+drop table if exists general.october_2021_c_file_content_train;
 
 create table
-general.august_2021_c_file_content_train
+general.october_2021_c_file_content_train
 as
 select
 id
@@ -66,15 +66,15 @@ id
 , content
 , general.bq_file_split(cnt.repo_name, file) as file_split
 from
-general.august_2021_c_file_content as cnt
+general.october_2021_c_file_content as cnt
 where
 general.bq_repo_split(cnt.repo_name) = 'Train'
 ;
 
-drop table if exists general.august_2021_c_file_content_test;
+drop table if exists general.october_2021_c_file_content_test;
 
 create table
-general.august_2021_c_file_content_test
+general.october_2021_c_file_content_test
 as
 select
 id
@@ -83,16 +83,16 @@ id
 , content
 , general.bq_file_split(cnt.repo_name, file) as file_split
 from
-general.august_2021_c_file_content as cnt
+general.october_2021_c_file_content as cnt
 where
 general.bq_repo_split(cnt.repo_name) = 'Test'
 ;
 
 
-drop table if exists general.august_2021_c_file_content_validation;
+drop table if exists general.october_2021_c_file_content_validation;
 
 create table
-general.august_2021_c_file_content_validation
+general.october_2021_c_file_content_validation
 as
 select
 id
@@ -101,17 +101,17 @@ id
 , content
 , general.bq_file_split(cnt.repo_name, file) as file_split
 from
-general.august_2021_c_file_content as cnt
+general.october_2021_c_file_content as cnt
 where
 general.bq_repo_split(cnt.repo_name) = 'Validation'
 ;
 
 # TODO - properties prior to June
-# TODO - properties from august to August
-drop table if exists general.august_2020_c_file_properties;
+# TODO - properties from october to August
+drop table if exists general.october_2020_c_file_properties;
 
 create table
-general.august_2020_c_file_properties
+general.october_2020_c_file_properties
 as
 select
 id
@@ -119,7 +119,7 @@ id
 , general.bq_repo_split(cnt.repo_name) as repo_split
 , general.bq_file_split(cnt.repo_name, cnt.file) as file_split
 from
-general.august_2021_c_file_content as cnt
+general.october_2021_c_file_content as cnt
 join
 general.file_properties as fp
 on
