@@ -1,0 +1,25 @@
+# This scripts document the actions needed to build the data set
+
+# First, the repository main should be run
+
+# Run generate_dataset.sql
+
+# Run prepare_before_extraction.sql
+
+# Run file_properties_on_relevant.sql
+
+# Run extract_previous_file_properties.sql
+
+# TODO - extract commits before moving to future properties
+
+# Run generate_labels.sql
+
+
+
+# Run program_repair.sql
+
+# Run generate_commits_dataset.sql
+
+# Run generate_difficulty_pairs.sql
+
+# Run generate_code_similarity_dataset.sql
