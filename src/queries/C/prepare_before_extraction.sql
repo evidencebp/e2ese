@@ -1,4 +1,4 @@
-# file_properties_per_period.sql
+# prepare_before_extraction.sql
 
 # NOTE - Set source_date to proper value
 DECLARE source_date DATE DEFAULT PARSE_DATE('%d/%m/%Y',  '1/6/2021');
