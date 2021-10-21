@@ -8,6 +8,7 @@ SELECT repo_name
 , is_test
 , commits
 , ccp
+, corrective_commits
 , refactor_mle
 , avg_coupling_code_size_cut
 , authors
