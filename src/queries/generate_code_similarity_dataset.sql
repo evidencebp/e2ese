@@ -1,69 +1,71 @@
 
-drop table if exists general.contents_diff_java_june_aug_2021;
+
+drop table if exists general.contents_diff;
 
 
 create table
-general.contents_diff_java_june_aug_2021
+general.contents_diff
 as
 select
-n.repo_name
-, n.path as file
-, n.content
+c.repo_name
+, c.file as file
+, c.content as current_content
+, p.content as prev_content
 from
-general.june_2021_java_file_content as p
+general.contents_prev_content as p
 join
-general.contents_1_august_2021 as n
+general.contents_cur_content as c
 on
-p.repo_name = n.repo_name
+p.repo_name = c.repo_name
 and
-p.file = n.path
+p.file = c.file
 where
-p.content != n.content
+p.content != c.content
 ;
 
 
-drop table if exists general.java_june_aug_2021_similarity;
+drop table if exists general.code_similarity;
 
 create table
-general.java_june_aug_2021_similarity
+general.code_similarity
 as
 select
 f1.repo_name
 , f1.file as file1
-, f2.path as file2
+, f2.file as file2
 , general.bq_repo_split(f1.repo_name) as repo_split
 , general.bq_file_pair_split(f1.repo_name
  , f1.file
  , f2.repo_name
- , f2.path
+ , f2.file
 ) as pair_split
 , 0 as Is_Similar
 from
-general.contents_diff_java_june_aug_2021 as f1
+general.contents_diff as f1
 join
-general.contents_1_august_2021 as f2
+general.contents_cur_content as f2
 on
 f1.repo_name = f2.repo_name
 and
-f1.file != f2.path
+f1.file != f2.file
 where
 lower(if(STRPOS(f1.file, '/') >= 0
     , reverse(substr(reverse(f1.file), STRPOS(reverse(f1.file), '/') ))
     , null))
-=  lower(if(STRPOS(f2.path, '/') >= 0
-    , reverse(substr(reverse(f2.path), STRPOS(reverse(f2.path), '/') ))
+=  lower(if(STRPOS(f2.file, '/') >= 0
+    , reverse(substr(reverse(f2.file), STRPOS(reverse(f2.file), '/') ))
     , null))
 # Filter about a 3/4 in order to get positive/negative ratio 1:10
 and
 substr(TO_HEX(md5(concat(f1.repo_name
  , f1.file
  , f2.repo_name
- , f2.path
+ , f2.file
  , "48hf5tg"))), 9,1) in ('1', '2','3', '4')
 ;
 
 insert into
-general.java_june_aug_2021_similarity
+general.code_similarity
 select
 f1.repo_name
 , f1.file as file1
@@ -76,52 +78,51 @@ f1.repo_name
 ) as pair_split
 , 1 as Is_Similar
 from
-general.contents_diff_java_june_aug_2021 as f1
+general.contents_diff as f1
 ;
 
 
 
-drop table if exists general.contents_diff_java_june_aug_2021_test;
+drop table if exists general.contents_diff_train;
 
 create table
-general.contents_diff_java_june_aug_2021_test
+general.contents_diff_train
 as
 select
 *
 from
-general.contents_diff_java_june_aug_2021
+general.contents_diff
 where
-general.bq_repo_split(repo_name) = 'Test'
+general.bq_repo_split(repo_name) = 'Train'
 ;
 
 
-drop table if exists general.contents_diff_java_june_aug_2021_validation;
+
+drop table if exists general.contents_diff_validation;
 
 create table
-general.contents_diff_java_june_aug_2021_validation
+general.contents_diff_validation
 as
 select
 *
 from
-general.contents_diff_java_june_aug_2021
+general.contents_diff
 where
 general.bq_repo_split(repo_name) = 'Validation'
 ;
 
 
-drop table if exists general.contents_diff_java_june_aug_2021_train;
+
+drop table if exists general.contents_diff_test;
 
 create table
-general.contents_diff_java_june_aug_2021_train
+general.contents_diff_test
 as
 select
 *
 from
-general.contents_diff_java_june_aug_2021
+general.contents_diff
 where
-general.bq_repo_split(repo_name) = 'Train'
+general.bq_repo_split(repo_name) = 'Test'
 ;
 
-drop table if exists general.contents_diff_java_june_aug_2021_test;
-drop table if exists general.contents_diff_java_june_aug_2021_validation;
-drop table if exists general.contents_diff_java_june_aug_2021_train;
