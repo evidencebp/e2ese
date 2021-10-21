@@ -1,41 +1,115 @@
 # Using files of the same developer of different quality in order to learn program difficulty.
 # Since the developer is factored out, program difficulty is more dominating.
-# An alternative, complementary way to build paris of different difficulty level is use
-# files created by beginners as easy ones, compare to file of programmers experienced in the project
-#(again, preferring the the same developer)
-# Using beginners code is inspired by "Characterizing and Predicting Good First Issues"
-# https://www.eecs.yorku.ca/~wangsong/papers/esem21b.pdf
 # Another possible way is same developer, single same date commit and different duration
 
-drop table if exists general.difficulty_pairs;
+drop table if exists general.difficulty_pairs_by_ccp;
 
 
 create table
-general.difficulty_pairs
+general.difficulty_pairs_by_ccp
 as
 select
 e.repo_name
 , e.file as easy_file
 , h.file as hard_file
 from
+general.relevant_repos as r
+join
 general.file_labels as e
+on
+r.repo_name = e.repo_name
+join
+general.file_properties as efp
+on
+e.repo_name = efp.repo_name
+and
+e.file = efp.file
 join
 general.file_labels as h
 on
 e.repo_name = h.repo_name
+join
+general.file_properties as hfp
+on
+h.repo_name = hfp.repo_name
 and
-e.creator_email = h.creator_email
+h.file = hfp.file
+and
+efp.creator_email = hfp.creator_email
 where
 e.authors = 1
 and
 h.authors = 1
 and
 # get files of the same year (same developer skill) and same age
-extract(year from e.min_commit_time) = extract(year from h.min_commit_time)
+extract(year from efp.min_commit_time) = extract(year from hfp.min_commit_time)
 and
-extract(year from e.max_commit_time) = extract(year from h.max_commit_time)
+extract(year from efp.max_commit_time) = extract(year from hfp.max_commit_time)
 and
-e.ccp_level = 1 and e.commits >= 10
+e.ccp_level = 1 and e.commits >= 5
 and
-h.ccp_level = 4 and e.commits >= 10
+h.ccp_level = 4 and h.commits >= 5
+and
+not e.is_test
+and
+not h.is_test
 ;
+
+# An alternative, complementary way to build paris of different difficulty level is use
+# files created by beginners as easy ones, compare to file of programmers experienced in the project
+#(again, preferring the the same developer)
+# Using beginners code is inspired by "Characterizing and Predicting Good First Issues"
+# https://www.eecs.yorku.ca/~wangsong/papers/esem21b.pdf
+
+drop table if exists general.difficulty_pairs_by_tenure;
+
+
+create table
+general.difficulty_pairs_by_tenure
+as
+select
+e.repo_name
+, e.file as easy_file
+, h.file as hard_file
+from
+general.relevant_repos as r
+join
+general.developer_per_repo_profile as d
+on
+r.repo_name = d.repo_name
+join
+general.file_properties as e
+on
+d.repo_name = e.repo_name
+and
+d.author_email = e.creator_email
+and
+e.authors = 1 # was create by only this person
+and
+timestamp_diff(e.max_commit_time, d.min_commit_timestamp, DAY) <= 6*30
+join
+general.file_properties as h
+on
+d.repo_name = h.repo_name
+and
+d.author_email = h.creator_email
+and
+h.authors = 1 # was create by only this person
+and
+timestamp_diff(h.min_commit_time, d.min_commit_timestamp, DAY) > 6*30
+and
+timestamp_diff(h.max_commit_time, d.min_commit_timestamp, DAY) < 12*30
+where
+e.code_extension
+and
+not e.is_test
+and
+h.code_extension
+and
+not h.is_test
+and
+e.commits >= 5 # To have file with considerable work
+and
+h.commits >= 5
+;
+
