@@ -3,6 +3,11 @@
 # Program repair samples
 # files with a single commit, so we have the diff in the content files.
 # The repair can be a fix or a refactor, modifying a single non test code file.
+
+drop table if exists general.program_repair;
+
+create table general.program_repair
+as
 select
 fl.repo_name
 , fl.file
@@ -10,7 +15,7 @@ fl.repo_name
 , is_corrective
 , is_refactor
 from
-general.file_labels as fl
+general.relevant_file_properties as fl
 join
 general.enhanced_commits as ec
 on
