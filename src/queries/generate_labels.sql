@@ -17,48 +17,38 @@ f.*
 , general.bq_repo_split(f.repo_name) as repo_split
 , general.bq_file_split(f.repo_name, f.file) as file_split
 from
-general.file_properties_per_period as f
-join
-general.repos_split as r
-on
-f.repo_name = r.repo_name
-where
-r.language = 'Java'
-and
-extension = '.java'
-and
-oss_license_found
+general.after_file_properties as f
 ;
 
 
-drop table if exists general.file_labels_thresholds;
+#drop table if exists general.file_labels_thresholds;
 
 
-create table
-general.file_labels_thresholds
-as
-select
-distinct
-PERCENTILE_DISC(ccp, 0.25) OVER() AS ccp_q1
-, PERCENTILE_DISC(ccp, 0.75) OVER() AS ccp_q4
+#create table
+#general.file_labels_thresholds
+#as
+#select
+#distinct
+#PERCENTILE_DISC(ccp, 0.25) OVER() AS ccp_q1
+#, PERCENTILE_DISC(ccp, 0.75) OVER() AS ccp_q4
 
-, PERCENTILE_DISC(same_day_duration_avg, 0.25) OVER() AS same_day_duration_avg_q1
-, PERCENTILE_DISC(same_day_duration_avg, 0.75) OVER() AS same_day_duration_avg_q4
+#, PERCENTILE_DISC(same_day_duration_avg, 0.25) OVER() AS same_day_duration_avg_q1
+#, PERCENTILE_DISC(same_day_duration_avg, 0.75) OVER() AS same_day_duration_avg_q4
 
 #, PERCENTILE_DISC(bug_prev_touch_ago, 0.25) OVER() AS bug_prev_touch_ago_q1
 #, PERCENTILE_DISC(bug_prev_touch_ago, 0.75) OVER() AS bug_prev_touch_ago_q4
 
-, PERCENTILE_DISC(avg_coupling_code_size_cut, 0.25) OVER() AS avg_coupling_code_size_cut_q1
-, PERCENTILE_DISC(avg_coupling_code_size_cut, 0.75) OVER() AS avg_coupling_code_size_cut_q4
+#, PERCENTILE_DISC(avg_coupling_code_size_cut, 0.25) OVER() AS avg_coupling_code_size_cut_q1
+#, PERCENTILE_DISC(avg_coupling_code_size_cut, 0.75) OVER() AS avg_coupling_code_size_cut_q4
 
-, PERCENTILE_DISC(one_file_fix_rate, 0.25) OVER() AS one_file_fix_rate_q1
-, PERCENTILE_DISC(one_file_fix_rate, 0.75) OVER() AS one_file_fix_rate_q4
+#, PERCENTILE_DISC(one_file_fix_rate, 0.25) OVER() AS one_file_fix_rate_q1
+#, PERCENTILE_DISC(one_file_fix_rate, 0.75) OVER() AS one_file_fix_rate_q4
 
-from
-general.file_labels
-where
-commits >= 10
-;
+#from
+#general.after_file_properties # Thresholds were computed once and kept the same for all data sets
+#where
+#commits >= 10
+#;
 
 
 update general.file_labels as fp
@@ -76,16 +66,16 @@ where
 true
 ;
 
-# into file_labels_stats.csv
-select
-count(*) as files
-, sum(if(commits >= 10,1,0)) as files_with_10_commits
-, avg(has_bug) as has_bug
-, sum(if(commits >= 10,has_bug,0)) as has_bug_with_10_commits
-, sum(if(ccp_level=1,1,0)) as ccp_q1
-, sum(if(ccp_level=4,1,0)) as ccp_q4
-, sum(if(performance_fix_rate> 0, 1,0)) as performance_fixs
-, sum(if(security_fix_rate> 0, 1,0)) as security_fixs
-from
-general.file_labels
-;
+# into file_labels_stats.csv - also computed once
+#select
+#count(*) as files
+#, sum(if(commits >= 10,1,0)) as files_with_10_commits
+#, avg(has_bug) as has_bug
+#, sum(if(commits >= 10,has_bug,0)) as has_bug_with_10_commits
+#, sum(if(ccp_level=1,1,0)) as ccp_q1
+#, sum(if(ccp_level=4,1,0)) as ccp_q4
+#, sum(if(performance_fix_rate> 0, 1,0)) as performance_fixs
+#, sum(if(security_fix_rate> 0, 1,0)) as security_fixs
+#from
+#general.file_labels
+#;
