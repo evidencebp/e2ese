@@ -10,15 +10,19 @@
 
 # Run extract_previous_file_properties.sql
 
-# TODO - extract commits before moving to future properties
+# Run prepare_after_extraction.sql
+
+# Run extract_after_file_properties.sql
+
+# Run generate_commits_dataset.sql
+
+# Run extract_after_commits.sql
 
 # Run generate_labels.sql
 
 
 
 # Run program_repair.sql
-
-# Run generate_commits_dataset.sql
 
 # Run generate_difficulty_pairs.sql
 
