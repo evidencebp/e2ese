@@ -26,4 +26,7 @@
 
 # Run generate_difficulty_pairs.sql
 
+# Run prepare_code_similarity.sql
 # Run generate_code_similarity_dataset.sql
+
+# Run cleanup.sql
