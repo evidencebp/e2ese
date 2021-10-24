@@ -1,63 +1,8 @@
-# Finding relevant extensions
-select
-extension
-, count(*)
-from
-general.contents_1_october_2021 as cnt
-join
-general.repos_split as r
-on
-cnt.repo_name = r.repo_name
-where
-r.language in ('C', 'C++')
-and
-oss_license_found
-group by
-extension
-having
-count(*) >= 1000
-order by
-count(*) desc
-;
 
-
-drop table if exists general.october_2021_c_file_content;
+drop table if exists general.lang_relevant_content_train;
 
 create table
-general.october_2021_c_file_content
-as
-select
-id
-, cnt.repo_name
-, path as file
-, content
-, general.bq_repo_split(cnt.repo_name) as repo_split
-, general.bq_file_split(cnt.repo_name, path) as file_split
-from
-general.contents_1_october_2021 as cnt
-join
-general.repos_split as r
-on
-cnt.repo_name = r.repo_name
-where
-r.language in ('C', 'C++')
-and
-extension in ('.h'
-, '.cpp'
-, '.c'
-, '.hpp'
-, '.cc'
-, '.cxx'
-, '.hh'
-, '.hxx')
-and
-oss_license_found
-;
-
-drop table if exists general.october_2021_c_file_content_train;
-
-create table
-general.october_2021_c_file_content_train
+general.lang_relevant_content_train
 as
 select
 id
@@ -66,16 +11,16 @@ id
 , content
 , general.bq_file_split(cnt.repo_name, file) as file_split
 from
-general.october_2021_c_file_content as cnt
+general.lang_relevant_content as cnt
 where
 general.bq_repo_split(cnt.repo_name) = 'Train'
 ;
 
 
-drop table if exists general.october_2021_c_file_content_validation;
+drop table if exists general.lang_relevant_content_validation;
 
 create table
-general.october_2021_c_file_content_validation
+general.lang_relevant_content_validation
 as
 select
 id
@@ -84,15 +29,15 @@ id
 , content
 , general.bq_file_split(cnt.repo_name, file) as file_split
 from
-general.october_2021_c_file_content as cnt
+general.lang_relevant_content as cnt
 where
 general.bq_repo_split(cnt.repo_name) = 'Validation'
 ;
 
-drop table if exists general.october_2021_c_file_content_test;
+drop table if exists general.lang_relevant_content_test;
 
 create table
-general.october_2021_c_file_content_test
+general.lang_relevant_content_test
 as
 select
 id
@@ -101,7 +46,7 @@ id
 , content
 , general.bq_file_split(cnt.repo_name, file) as file_split
 from
-general.october_2021_c_file_content as cnt
+general.lang_relevant_content as cnt
 where
 general.bq_repo_split(cnt.repo_name) = 'Test'
 ;

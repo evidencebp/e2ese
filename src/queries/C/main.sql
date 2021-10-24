@@ -2,6 +2,8 @@
 
 # First, the repository main should be run
 
+# Modify and run prepare_source_extraction.sql
+
 # Run generate_dataset.sql
 
 # Run prepare_before_extraction.sql

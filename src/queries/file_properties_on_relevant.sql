@@ -2,9 +2,8 @@
 # This file is based on file_properties.sql from the general repository
 # The main difference is (and should be kept) that the computation is on the
 # pre-prepared relevant data and the table names are adapted.
-
-# Some more difference are marked in "NOTE"
-# You should check them and update accordingly before running the code.
+# The difference is marked in "NOTE"
+# You should check them and update accordingly.
 
 drop table if exists general.relevant_file_properties;
 
@@ -200,10 +199,9 @@ create table general.relevant_file_content_abstraction
 as
 SELECT
 cnt.repo_name as repo_name
-, path as file
+, file
  FROM
- # NOTE - should be set to the relevant date content
- general.contents as cnt
+ general.lang_relevant_content as cnt
 WHERE
 general.bq_abstraction(lower(content)) > 0
 ;
@@ -221,10 +219,9 @@ fp.file = aux.file
 update general.relevant_file_properties as fp
 set fp.size = aux.size
 from
-# NOTE - should be set to the relevant date content
-general.contents as aux
+general.lang_relevant_content as aux
 where
 fp.repo_name = aux.repo_name
 and
-fp.file = aux.path
+fp.file = aux.file
 ;
