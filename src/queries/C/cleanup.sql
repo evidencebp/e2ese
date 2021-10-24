@@ -1,8 +1,10 @@
+drop view if exists general.relevant_content;
+
 # Source tables
-drop table if exists general.october_2021_c_file_content;
-drop table if exists general.october_2021_c_file_content_train;
-drop table if exists general.october_2021_c_file_content_validation;
-drop table if exists general.october_2021_c_file_content_test;
+drop table if exists general.lang_relevant_content;
+drop table if exists general.lang_relevant_content_train;
+drop table if exists general.lang_relevant_content_validation;
+drop table if exists general.lang_relevant_content_test;
 
 # Relevant auxiliary tables
 drop table if exists general.relevant_repos;
