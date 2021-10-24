@@ -219,9 +219,9 @@ fp.file = aux.file
 update general.relevant_file_properties as fp
 set fp.size = aux.size
 from
-general.lang_relevant_content as aux
+general.relevant_content as aux
 where
 fp.repo_name = aux.repo_name
 and
-fp.file = aux.file
+fp.file = aux.path
 ;
