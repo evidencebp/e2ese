@@ -9,6 +9,22 @@ from
 general.contents_1_august_2021
 ;
 
+drop table if exists general.relevant_repos;
+
+
+create table
+general.relevant_repos
+as
+select
+repo_name
+from
+general.repos_split as r
+where
+r.language in ('C', 'C++')
+and
+oss_license_found
+;
+
 # Finding relevant extensions
 select
 extension

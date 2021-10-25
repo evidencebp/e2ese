@@ -6,22 +6,6 @@ DECLARE prediction_date DATE DEFAULT DATE_ADD(source_date, INTERVAL 2 month) ;
 
 SELECT source_date, prediction_date;
 
-drop table if exists general.relevant_repos;
-
-
-create table
-general.relevant_repos
-as
-select
-repo_name
-from
-general.repos_split as r
-where
-r.language in ('C', 'C++')
-and
-oss_license_found
-;
-
 drop table if exists general.relevant_enhanced_commits;
 
 
