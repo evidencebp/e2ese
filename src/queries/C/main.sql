@@ -12,7 +12,11 @@
 
 # Run extract_previous_file_properties.sql
 
+# Run commit_file_prev_touch.sql
+
 # Run prepare_after_extraction.sql
+
+# Run commit_file_prev_touch.sql
 
 # Run extract_after_file_properties.sql
 
