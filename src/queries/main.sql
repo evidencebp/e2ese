@@ -12,7 +12,7 @@
 
 # Run generate_dataset.sql
 
-# Run lang/prepare_before_extraction.sql
+# Modify and run prepare_before_extraction.sql
 
 # Run file_properties_on_relevant.sql
 
