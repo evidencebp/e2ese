@@ -1,3 +1,4 @@
+# generate_commits_dataset.sql
 drop table if exists general.relevant_enhanced_commits_extraction;
 
 create table
