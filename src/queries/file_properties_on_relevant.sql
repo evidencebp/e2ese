@@ -1,4 +1,4 @@
-# file_properties.sql
+# file_properties_on_relevant.sql
 # This file is based on file_properties.sql from the general repository
 # The main difference is (and should be kept) that the computation is on the
 # pre-prepared relevant data and the table names are adapted.
