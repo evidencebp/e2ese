@@ -12,6 +12,9 @@
 
 # export data set (source code)
 
+
+### Before file properties
+
 # Modify and run prepare_before_extraction.sql
 
 # Run file_properties_on_relevant.sql
@@ -21,6 +24,9 @@
 # Run extract_previous_file_properties.sql
 
 # export previous_file_properties
+
+
+### After file properties
 
 # Run prepare_after_extraction.sql
 
@@ -39,6 +45,8 @@
 # Run extract_after_commits.sql
 
 # export commits
+
+
 
 # Run program_repair.sql
 
