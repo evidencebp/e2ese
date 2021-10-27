@@ -1,3 +1,4 @@
+# generate_dataset.sql
 
 drop table if exists general.lang_relevant_content_train;
 
