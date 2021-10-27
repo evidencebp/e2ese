@@ -25,7 +25,7 @@ select
 *
 from
 # Note - set proper content version
-general.contents_1_june_2021
+general.contents_1_august_2021
 ;
 
 
