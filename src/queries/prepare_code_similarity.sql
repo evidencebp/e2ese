@@ -1,3 +1,4 @@
+# prepare_code_similarity.sql
 drop view if exists general.contents_prev_content;
 
 create view
