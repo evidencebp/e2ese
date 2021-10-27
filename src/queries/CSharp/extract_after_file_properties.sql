@@ -1,3 +1,4 @@
+# CSharp/extract_after_file_properties.sql
 drop table if exists general.after_file_properties;
 
 create table
