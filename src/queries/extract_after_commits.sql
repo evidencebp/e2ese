@@ -1,3 +1,4 @@
+# extract_after_commits.sql
 drop table if exists general.after_commits;
 
 create table
