@@ -225,3 +225,5 @@ fp.repo_name = aux.repo_name
 and
 fp.file = aux.path
 ;
+
+drop table if exists general.relevant_file_content_abstraction;
