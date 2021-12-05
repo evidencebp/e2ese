@@ -1,3 +1,5 @@
+# C/prepare_source_extraction.sql
+
 drop view if exists general.relevant_content;
 
 create view
@@ -6,7 +8,7 @@ as
 select
 *
 from
-general.contents_1_august_2021
+general.contents_1_december_2021
 ;
 
 drop table if exists general.relevant_repos;
