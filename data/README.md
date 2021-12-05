@@ -56,3 +56,21 @@ https://github.com/evidencebp/e2ese-dataset-javascript-october-2021
 https://github.com/evidencebp/e2ese-dataset-php-october-2021
 
 https://github.com/evidencebp/e2ese-dataset-python-october-2021
+
+
+## December
+
+
+https://github.com/evidencebp/e2ese-dataset-c-december-2021
+
+https://github.com/evidencebp/e2ese-dataset-csharp-december-2021
+
+https://github.com/evidencebp/e2ese-dataset-go-december-2021
+
+https://github.com/evidencebp/e2ese-dataset-java-december-2021
+
+https://github.com/evidencebp/e2ese-dataset-javascript-december-2021
+
+https://github.com/evidencebp/e2ese-dataset-php-december-2021
+
+https://github.com/evidencebp/e2ese-dataset-python-december-2021
