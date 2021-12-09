@@ -1,4 +1,4 @@
-
+# generate_labels.sql
 
 drop table if exists general.file_labels;
 
