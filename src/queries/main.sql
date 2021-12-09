@@ -21,7 +21,7 @@
 
 # Run commit_file_prev_touch.sql
 
-# Run extract_previous_file_properties.sql
+# Run lang/extract_previous_file_properties.sql
 
 # export previous_file_properties
 
