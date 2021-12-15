@@ -1,4 +1,5 @@
-# extract_previous_file_properties.sql
+# CSharp/extract_previous_file_properties.sql
+
 drop table if exists general.previous_file_properties;
 
 create table
