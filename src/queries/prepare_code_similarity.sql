@@ -9,7 +9,7 @@ cnt.repo_name
 , content
 , path as file
 from
-general.contents_1_june_2021 as cnt
+general.contents_1_august_2021 as cnt
 join
 general.relevant_repos as r
 on
@@ -27,7 +27,7 @@ cnt.repo_name
 , content
 , path as file
 from
-general.contents_1_august_2021 as cnt
+general.contents_1_october_2021 as cnt
 join
 general.relevant_repos as r
 on

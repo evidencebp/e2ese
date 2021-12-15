@@ -1,3 +1,4 @@
+# CSharp/prepare_source_extraction.sql
 
 drop table if exists general.relevant_repos;
 
@@ -25,7 +26,7 @@ select
 *
 from
 # Note - set proper content version
-general.contents_1_december_2021
+general.contents_1_october_2021
 ;
 
 
