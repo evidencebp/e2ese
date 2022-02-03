@@ -1,5 +1,18 @@
 # JavaScript/prepare_source_extraction.sql
 
+drop view if exists general.relevant_content;
+
+create view
+general.relevant_content
+as
+select
+*
+from
+# Note - set proper content version
+general.contents_1_february_2022_by_2021
+;
+
+
 drop table if exists general.relevant_repos;
 
 
@@ -16,20 +29,6 @@ r.language = 'JavaScript'
 and
 oss_license_found
 ;
-
-drop view if exists general.relevant_content;
-
-create view
-general.relevant_content
-as
-select
-*
-from
-# Note - set proper content version
-general.contents_1_october_2021
-;
-
-
 
 drop table if exists general.lang_relevant_content;
 
