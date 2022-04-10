@@ -10,7 +10,7 @@ select
 *
 from
 # Note - set proper content version
-general.contents_1_february_2022_by_2021
+general.contents_1_april_2022
 ;
 
 drop table if exists general.relevant_repos;
@@ -22,12 +22,12 @@ as
 select
 repo_name
 from
-general.repos_split as r
+general.repos as r
 where
 # Note - set language when porting to a new language
 r.language = 'Go'
-and
-oss_license_found
+#and
+#oss_license_found
 ;
 
 
@@ -47,7 +47,7 @@ id
 from
 general.relevant_content as cnt
 join
-general.repos_split as r
+general.repos as r
 on
 cnt.repo_name = r.repo_name
 where
@@ -55,6 +55,6 @@ where
 r.language = 'Go'
 and
 extension = '.go'
-and
-oss_license_found
+#and
+#oss_license_found
 ;

@@ -8,7 +8,7 @@ as
 select
 *
 from
-general.contents_1_february_2022_by_2021
+general.contents_1_april_2022
 ;
 
 drop table if exists general.relevant_repos;
@@ -20,11 +20,11 @@ as
 select
 repo_name
 from
-general.repos_split as r
+general.repos as r
 where
 r.language in ('C', 'C++')
-and
-oss_license_found
+#and
+#oss_license_found
 ;
 
 # Finding relevant extensions
@@ -34,13 +34,13 @@ extension
 from
 general.relevant_content as cnt
 join
-general.repos_split as r
+general.repos as r
 on
 cnt.repo_name = r.repo_name
 where
 r.language in ('C', 'C++')
-and
-oss_license_found
+#and
+#oss_license_found
 group by
 extension
 having
@@ -65,7 +65,7 @@ id
 from
 general.relevant_content as cnt
 join
-general.repos_split as r
+general.repos as r
 on
 cnt.repo_name = r.repo_name
 where
@@ -79,6 +79,6 @@ extension in ('.h'
 , '.cxx'
 , '.hh'
 , '.hxx')
-and
-oss_license_found
+#and
+#oss_license_found
 ;
