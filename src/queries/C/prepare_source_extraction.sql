@@ -8,7 +8,7 @@ as
 select
 *
 from
-general.contents_1_april_2022
+general.contents_1_february_2022
 ;
 
 drop table if exists general.relevant_repos;
@@ -23,8 +23,6 @@ from
 general.repos as r
 where
 r.language in ('C', 'C++')
-#and
-#oss_license_found
 ;
 
 # Finding relevant extensions
@@ -79,6 +77,4 @@ extension in ('.h'
 , '.cxx'
 , '.hh'
 , '.hxx')
-#and
-#oss_license_found
 ;
