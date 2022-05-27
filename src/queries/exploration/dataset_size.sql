@@ -21,3 +21,13 @@ r.language
 order by
 r.language
 ;
+
+select
+count(distinct repo_name) as projects
+, count(distinct commit) as commits
+, count(distinct author_email) as developers
+, avg(if(is_cursing,1,0)) as is_cursing_ratio
+, avg(if(is_negative_sentiment,1,0)) as is_negative_sentiment_ratio
+from
+general.enhanced_commits
+;
