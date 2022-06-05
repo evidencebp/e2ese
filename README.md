@@ -13,6 +13,9 @@ This repository contains the source code needed for the generation and some auxa
 The main data is in different repositories since their volum is very large the sturcture is rather similar.
 The first batch of 1.8 million Java files from June 2021 is [here](https://github.com/evidencebp/e2ese-dataset)
 
+# Data sheet
+See [data sheet](https://github.com/evidencebp/e2ese/blob/main/e2ese_datasheet.pdf)
+
 # External e2ese data sets structure
 
 
