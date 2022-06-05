@@ -10,7 +10,7 @@
 
 # Run generate_dataset.sql
 
-# export data set (source code)
+# export dataset (source code)
 
 
 ### Before file properties
