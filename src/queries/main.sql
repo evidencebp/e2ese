@@ -38,7 +38,7 @@
 
 # Run generate_labels.sql
 
-# export generate_labels
+# export file_labels
 
 # Run generate_commits_dataset.sql
 

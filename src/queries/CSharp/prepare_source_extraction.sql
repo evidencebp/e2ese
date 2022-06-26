@@ -9,7 +9,7 @@ select
 *
 from
 # Note - set proper content version
-general.contents_1_june_2022
+general.contents_1_april_2022
 ;
 
 drop table if exists general.relevant_repos;
