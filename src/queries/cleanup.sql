@@ -21,6 +21,7 @@ drop table if exists general.program_repair;
 
 drop table if exists general.difficulty_pairs_by_ccp;
 drop table if exists general.difficulty_pairs_by_tenure;
+drop table if exists general.difficulty_pairs_by_commit_duration;
 
 # Code similarity
 drop view if exists general.contents_prev_content;
