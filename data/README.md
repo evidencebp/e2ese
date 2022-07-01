@@ -93,7 +93,7 @@ https://github.com/evidencebp/e2ese-dataset-php-february-2022
 https://github.com/evidencebp/e2ese-dataset-python-february-2022
 
 
-## April 2022 (process metrics will be populated during June)
+## April 2022
 
 https://github.com/evidencebp/e2ese-dataset-c-april-2022
 
@@ -109,3 +109,19 @@ https://github.com/evidencebp/e2ese-dataset-php-april-2022
 
 https://github.com/evidencebp/e2ese-dataset-python-april-2022
 
+
+## June 2022 (process metrics will be populated during August)
+
+https://github.com/evidencebp/e2ese-dataset-c-june-2022
+
+https://github.com/evidencebp/e2ese-dataset-csharp-june-2022
+
+https://github.com/evidencebp/e2ese-dataset-go-june-2022
+
+https://github.com/evidencebp/e2ese-dataset-java-june-2022
+
+https://github.com/evidencebp/e2ese-dataset-javascript-june-2022
+
+https://github.com/evidencebp/e2ese-dataset-php-june-2022
+
+https://github.com/evidencebp/e2ese-dataset-python-june-2022
