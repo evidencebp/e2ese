@@ -1,4 +1,4 @@
-
+# generate_code_similarity_dataset.sql
 
 drop table if exists general.contents_diff;
 

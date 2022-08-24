@@ -1,7 +1,7 @@
 # prepare_before_extraction.sql
 
 # NOTE - Set source_date to proper value
-DECLARE source_date DATE DEFAULT PARSE_DATE('%d/%m/%Y',  '1/4/2022');
+DECLARE source_date DATE DEFAULT PARSE_DATE('%d/%m/%Y',  '1/6/2022');
 DECLARE prediction_date DATE DEFAULT DATE_ADD(source_date, INTERVAL 2 month) ;
 
 SELECT source_date, prediction_date;

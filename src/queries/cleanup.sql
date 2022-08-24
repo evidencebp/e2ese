@@ -1,3 +1,5 @@
+# cleanup.sql
+
 drop view if exists general.relevant_content;
 
 # Source tables
