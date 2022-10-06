@@ -9,7 +9,7 @@ select
 *
 from
 # Note - set proper content version
-general.contents_1_june_2022
+general.contents_1_october_2022
 ;
 
 
