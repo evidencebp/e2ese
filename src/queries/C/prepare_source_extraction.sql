@@ -8,7 +8,7 @@ as
 select
 *
 from
-general.contents_1_october_2022
+general.contents_1_february_2023
 ;
 
 drop table if exists general.relevant_repos;
