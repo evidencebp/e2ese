@@ -112,48 +112,34 @@ create table
 general.difficulty_pairs_by_commit_duration
 as
 select
-e.repo_name
-, e.file as easy_file
-, h.file as hard_file
+efp.repo_name
+, efp.file as easy_file
+, hfp.file as hard_file
 from
 general.relevant_repos as r
 join
-general.file_labels as e
-on
-r.repo_name = e.repo_name
-join
 general.file_properties as efp
 on
-e.repo_name = efp.repo_name
-and
-e.file = efp.file
-join
-general.file_labels as h
-on
-e.repo_name = h.repo_name
+r.repo_name = efp.repo_name
 join
 general.file_properties as hfp
 on
-h.repo_name = hfp.repo_name
-and
-h.file = hfp.file
-and
-efp.creator_email = hfp.creator_email
+efp.repo_name = hfp.repo_name
 where
-e.authors = 1
+efp.authors = 1
 and
-h.authors = 1
+hfp.authors = 1
 and
 # get files of the same year (same developer skill) and same age
 extract(year from efp.min_commit_time) = extract(year from hfp.min_commit_time)
 and
 extract(year from efp.max_commit_time) = extract(year from hfp.max_commit_time)
 and
-(efp.same_day_duration_avg > 10 and efp.same_day_duration_avg <= 30) and e.commits = 1
+(efp.same_day_duration_avg > 10 and efp.same_day_duration_avg <= 30) and efp.commits = 1
 and
-(hfp.same_day_duration_avg > 30 and hfp.same_day_duration_avg <= 120) and h.commits = 1
+(hfp.same_day_duration_avg > 30 and hfp.same_day_duration_avg <= 120) and hfp.commits = 1
 and
-not e.is_test
+not efp.is_test
 and
-not h.is_test
+not hfp.is_test
 ;
