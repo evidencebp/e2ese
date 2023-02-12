@@ -10,7 +10,7 @@ select
 *
 from
 # Note - set proper content version
-general.contents_1_february_2023
+general.contents_1_december_2022
 ;
 
 
