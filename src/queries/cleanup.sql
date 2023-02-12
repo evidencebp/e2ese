@@ -19,6 +19,12 @@ drop table if exists general.previous_file_properties;
 drop table if exists general.after_file_properties;
 drop table if exists general.file_labels;
 
+# commits
+drop table if exists general.relevant_enhanced_commits_extraction;
+drop table if exists general.relevant_commits_files_extraction;
+drop table if exists general.after_commits;
+drop table if exists general.after_commits_files;
+
 drop table if exists general.program_repair;
 
 drop table if exists general.difficulty_pairs_by_ccp;
@@ -33,5 +39,6 @@ drop table if exists general.contents_diff;
 drop table if exists general.contents_diff_test;
 drop table if exists general.contents_diff_validation;
 drop table if exists general.contents_diff_train;
+drop table if exists general.relevant_code_similarity;
 
 
