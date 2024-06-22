@@ -1,6 +1,6 @@
 # e2ese
 
-The goal of this repository is to enable End to End Software Engineering research.
+The goal of this repository is to enable [End to End Software Engineering research](https://arxiv.org/pdf/2112.11858).
 It started in the source code as input and provide multiple process metrics that can be used as concepts in supervised learning.
 
 While pridcitve models have value, we would like to take a step further and look for causal relations.
